@@ -1,11 +1,7 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
-using System;
+﻿using OpenQA.Selenium.Edge;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Diego
@@ -14,13 +10,13 @@ namespace Diego
     {
         public void Baixar(string arquivo, string destino)
         {
-
             //var driverService = FirefoxDriverService.CreateDefaultService();
             //driverService.HideCommandPromptWindow = true;
             //FirefoxOptions options = new FirefoxOptions();
             //options.BrowserExecutableLocation = (@"C:\Program Files\Mozilla Firefox\firefox.exe");
             //options.AddArgument("--headless");
             //var mozila = new FirefoxDriver(driverService, options);
+            //var AtivosNaoBaixados = new List<string>();
 
             var driverService = EdgeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -28,21 +24,21 @@ namespace Diego
             options.AddArgument("--headless");
             var mozila = new EdgeDriver(driverService, options);
             var AtivosNaoBaixados = new List<string>();
+            var path = @$"{destino}\";
 
             foreach (string linha in File.ReadLines(arquivo))
             {
+                mozila.Navigate().GoToUrl($@"https://www.google.com/search?q= {linha}&tbm=isch");
+                var client = new WebClient();
+                var site = client.DownloadString($@"https://www.google.com/search?q= {linha}&tbm=isch");
+                var existeLink = site.Contains("https://encrypted");
+                var indexURL = site.IndexOf("https://encrypted");
+                var URLimagem = site.Substring(indexURL, 120);
+
                 try
                 {
-                    mozila.Navigate().GoToUrl($@"https://www.google.com/search?q= {linha}&tbm=isch");
-                    var image = mozila.FindElements(By.TagName("img"));
-                    var imageURL = image[3].GetAttribute("src");
-                    var path = @$"{destino}\";
-                    if (imageURL.Contains("data:image/png;base64"))
-                        RealizarDownload(imageURL.Remove(0, 22), linha, path);
-                    else if (imageURL.Contains("data:image/jpeg;base64,"))
-                        RealizarDownload(imageURL.Remove(0, 23), linha, path);
-
-                    if (FoiBaixado(path, linha)) AtivosNaoBaixados.Add(linha);
+                    RealizarDownload(URLimagem, linha, path);
+                    if (!FoiBaixado(path, linha)) AtivosNaoBaixados.Add(linha);
                 }
                 catch
                 {
@@ -55,7 +51,6 @@ namespace Diego
                 var writer = new StreamWriter(@$"{destino}\AtivosNaoBaixados.txt");
                 foreach (var item in AtivosNaoBaixados)
                     writer.WriteLine(item);
-
             }
             else
             {
@@ -65,21 +60,20 @@ namespace Diego
             mozila.Dispose();
         }
 
-        public void RealizarDownload(string base64, string linha, string path)
+        public async void RealizarDownload(string url, string linha, string path)
         {
-            MemoryStream ms = new MemoryStream(Convert.FromBase64String(base64));
-            Bitmap bmp = new Bitmap(ms);
-            bmp.Save(@path + $"{linha}.jpeg", ImageFormat.Jpeg);
+            using (var client = new WebClient())
+            {
+                await client.DownloadFileTaskAsync(url, path + linha + ".png");
+            }
         }
 
         public bool FoiBaixado(string path, string linha)
         {
-            if (File.Exists(path + linha))
+            if (File.Exists(path + linha + ".png"))
                 return true;
             else
                 return false;
         }
-
-       
     }
 }
