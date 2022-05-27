@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace Diego
+namespace AppDownload
 {
     //Contrato com a interface
     public class BaixarImagens : IBaixar
@@ -44,8 +44,8 @@ namespace Diego
 
                 //URL do link vai de indexURL, +120 
                 var URLimagem = site.Substring(indexURL, 120);
-                
 
+                //Tenta baixar a imagem, se ocorrer QUALQUER ERRO, cai no catch
                 try
                 {
                     RealizarDownload(URLimagem, linha, path);
@@ -58,7 +58,7 @@ namespace Diego
 
             if (ImagensNaoBaixadas.Count > 0)
             {
-                //Só faz a lista de Não Baixados apenas se possuir
+                //Só faz a lista de Não Baixados apenas se possuir imagens não baixadas 
                 var writer = new StreamWriter(@$"{destino}\ImagensNaoBaixados.txt");
                 foreach (var item in ImagensNaoBaixadas)
                     writer.WriteLine(item);
@@ -69,30 +69,36 @@ namespace Diego
             }
             // mozila.Close();
             // mozila.Dispose();
-
             return ImagensBaixadas;
         }
-
 
         //O método que usa o link para realizar o download e colocar na pasta destino 
         public void RealizarDownload(string url, string linha, string path)
         {
+            //Conexao com o WebClient
             using (var client = new WebClient())
             {
+                //Baixa a imagem 
                 client.DownloadFileTaskAsync(url, path + linha + ".png");
-                if (!FoiBaixado(path, linha)) ImagensNaoBaixadas.Add(linha);
-                var imagemBaixada = new Imagem(linha, path, DateTime.Now);
-                ImagensBaixadas.Add(imagemBaixada);
+
+                //Verifica se a imagem foi baixada, se não foi adiciona na lista de nao baixados
+                if (!FoiBaixado(path, linha)) ImagensNaoBaixadas.Add(linha); 
             }
         }
 
-        //Verifica se foi baixado algum arquivo
+        //Verifica se a imagem foi baixada
         public bool FoiBaixado(string path, string linha)
         {
             if (File.Exists(path + linha + ".png"))
+            {
+                //Criando um novo objeto Imagem
+                var imagemBaixada = new Imagem(linha, path, DateTime.Now);
+
+                //Adiciona na lista de imagens baixadas
+                ImagensBaixadas.Add(imagemBaixada);
                 return true;
-            else
-                return false;
+            }
+            else return false;
         }
     }
 }

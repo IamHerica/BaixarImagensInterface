@@ -1,14 +1,10 @@
 using System;
 using System.Windows.Forms;
 
-namespace Diego
+namespace AppDownload
 {
-    internal static class Program
+    static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        /// 
         //Aqui é onde rola o startup do tela 
         [STAThread]
         static void Main()

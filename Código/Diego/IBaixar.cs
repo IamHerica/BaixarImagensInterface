@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Diego
+namespace AppDownload
 {
 
     //Interface dos métodos de Download

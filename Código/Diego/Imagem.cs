@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Diego
+namespace AppDownload
 {
     public class Imagem
     {
@@ -8,16 +8,16 @@ namespace Diego
         public string caminho;
         public DateTime data;
 
-        public Imagem()
-        {
-
-        }
-
         public Imagem(string nome, string destino, DateTime dataHora)
         {
             nomeImagem = nome;
             caminho = destino;
             data = dataHora;
+        }
+
+        public override string ToString()
+        {
+            return $"Imagem {nomeImagem} no dia {data}";
         }
     }
 }
