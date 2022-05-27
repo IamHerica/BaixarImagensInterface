@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -33,6 +35,9 @@ namespace AppDownload
                 //WebClient simplicado para mandar e receber 
                 var client = new WebClient();
 
+                //UserAgent p mostrar quem fez a requisição para o site (para não suspeitar de bots)
+                client.Headers.Set(HttpRequestHeader.UserAgent, "Mozilla / 5.0(Windows NT 6.1; WOW64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 43.0.2357.134 Safari / 537.36");
+
                 //Baixando o site que o google fornece, que vem "encriptado"
                 var site = client.DownloadString($@"https://www.google.com/search?q= {linha}&tbm=isch");
 
@@ -42,8 +47,8 @@ namespace AppDownload
                 //Pega o indíce do link 
                 var indexURL = site.IndexOf("https://encrypted");
 
-                //URL do link vai de indexURL, +120 
-                var URLimagem = site.Substring(indexURL, 120);
+                //URL do link vai de indexURL, +110 
+                var URLimagem = site.Substring(indexURL, 110);
 
                 //Tenta baixar a imagem, se ocorrer QUALQUER ERRO, cai no catch
                 try
@@ -79,10 +84,10 @@ namespace AppDownload
             using (var client = new WebClient())
             {
                 //Baixa a imagem 
-                client.DownloadFileTaskAsync(url, path + linha + ".png");
+                client.DownloadFile(url, path + linha + ".png");
 
                 //Verifica se a imagem foi baixada, se não foi adiciona na lista de nao baixados
-                if (!FoiBaixado(path, linha)) ImagensNaoBaixadas.Add(linha); 
+                if (!FoiBaixado(path, linha)) ImagensNaoBaixadas.Add(linha);
             }
         }
 
