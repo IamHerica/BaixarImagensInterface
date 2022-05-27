@@ -17,7 +17,7 @@ namespace AppDownload
 
         public override string ToString()
         {
-            return $"Imagem {nomeImagem} no dia {data}";
+            return $"Download de {nomeImagem} feito no dia {data}";
         }
     }
 }
