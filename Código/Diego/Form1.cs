@@ -82,7 +82,7 @@ namespace AppDownload
         }
 
         //Método do botao mostrar, que só aparece depois que as imagens foram baixadas
-        private void button_mostrar_Click(object sender, EventArgs e)
+        public void button_mostrar_Click(object sender, EventArgs e)
         {
             label_imagensBaixadas.Visible = true;   //vai mostrar o titulo "imagens baixadas"
             listBoxImagensBaixadas.Visible = true;  //vai mostrar a listBox doq foi baixado
@@ -90,7 +90,7 @@ namespace AppDownload
         }
 
         //Método do botao que oculta o nome das imagens 
-        private void button_ocultar_Click(object sender, EventArgs e)
+        public void button_ocultar_Click(object sender, EventArgs e)
         {
             label_imagensBaixadas.Visible = false;      //vai ocultar o titulo "imagens baixadas"
             listBoxImagensBaixadas.Visible = false;     //vai ocultar a listBox

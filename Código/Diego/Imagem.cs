@@ -4,9 +4,9 @@ namespace AppDownload
 {
     public class Imagem
     {
-        public string nomeImagem;
-        public string caminho;
-        public DateTime data;
+        public string nomeImagem { get; set; }
+        public string caminho { get; set; }
+        public DateTime data { get; set; }
 
         public Imagem(string nome, string destino, DateTime dataHora)
         {
@@ -15,6 +15,7 @@ namespace AppDownload
             data = dataHora;
         }
 
+        //Sobreescrita do método ToString()
         public override string ToString()
         {
             return $"Downlaod de {nomeImagem} feito no dia {data}";
