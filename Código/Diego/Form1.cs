@@ -86,6 +86,7 @@ namespace AppDownload
         {
             label_imagensBaixadas.Visible = false;
             listBoxImagensBaixadas.Visible = false;
+            button_ocultar.Visible = false;
         }   
     }
 }
