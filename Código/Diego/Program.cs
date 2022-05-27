@@ -8,6 +8,8 @@ namespace Diego
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+        //Aqui é onde rola o startup do tela 
         [STAThread]
         static void Main()
         {

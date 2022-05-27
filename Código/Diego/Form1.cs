@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Diego
@@ -48,8 +49,23 @@ namespace Diego
 
         public void button_baixar_Click(object sender, EventArgs e)
         {
+            //Agregação
             BaixarImagens download = new BaixarImagens();
-            download.Baixar(_arquivo, _destino);
+            var imagem = download.Baixar(_arquivo, _destino);
+
+
+            foreach (var i in imagem)
+            {
+                //label_listaImagens.Text = i.nomeImagem;
+                //label_listaImagens.Text.
+                listBox1.Items.Add(i.nomeImagem);
+            }
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
