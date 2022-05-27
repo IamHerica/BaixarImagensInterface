@@ -3,7 +3,6 @@
 namespace AppDownload
 {
 
-    //Interface dos métodos de Download
     public interface IBaixar
     {
         public List<Imagem> Baixar(string arquivo, string destino);

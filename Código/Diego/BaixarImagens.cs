@@ -6,7 +6,6 @@ using System.Windows.Forms;
 
 namespace AppDownload
 {
-    //Contrato com a interface
     public class BaixarImagens : IBaixar
     {
         List<Imagem> ImagensBaixadas = new List<Imagem>();
@@ -75,7 +74,6 @@ namespace AppDownload
             return ImagensBaixadas;
         }
 
-        //O método que usa o link para realizar o download e colocar na pasta destino 
         public void RealizarDownload(string url, string linha, string path)
         {
             //Conexao com o WebClient
@@ -89,7 +87,6 @@ namespace AppDownload
             }
         }
 
-        //Verifica se a imagem foi baixada
         public bool FoiBaixado(string path, string linha)
         {
             if (File.Exists(path + linha + ".png"))
