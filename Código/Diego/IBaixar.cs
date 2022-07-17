@@ -2,12 +2,8 @@
 
 namespace AppDownload
 {
-
-    //Interface dos métodos de Download
     public interface IBaixar
     {
-        public List<Imagem> Baixar(string arquivo, string destino);
-        public bool FoiBaixado(string path, string linha);
-        public void RealizarDownload(string imagem, string linha, string path);
+        public string Baixar(string arquivo);
     }
 }
