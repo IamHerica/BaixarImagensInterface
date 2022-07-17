@@ -5,7 +5,6 @@ namespace AppDownload
 {
     static class Program
     {
-        //Aqui é onde rola o startup do tela 
         [STAThread]
         static void Main()
         {

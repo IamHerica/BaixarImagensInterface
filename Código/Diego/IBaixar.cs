@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AppDownload
+﻿namespace AppDownload
 {
     public interface IBaixar
     {

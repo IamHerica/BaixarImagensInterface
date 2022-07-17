@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tela_imagem));
             this.button_mostrarImagem = new System.Windows.Forms.Button();
             this.button_ocultar = new System.Windows.Forms.Button();
             this.localImagem = new System.Windows.Forms.PictureBox();
@@ -36,7 +37,7 @@
             // 
             // button_mostrarImagem
             // 
-            this.button_mostrarImagem.Location = new System.Drawing.Point(27, 413);
+            this.button_mostrarImagem.Location = new System.Drawing.Point(30, 366);
             this.button_mostrarImagem.Name = "button_mostrarImagem";
             this.button_mostrarImagem.Size = new System.Drawing.Size(143, 29);
             this.button_mostrarImagem.TabIndex = 0;
@@ -46,7 +47,7 @@
             // 
             // button_ocultar
             // 
-            this.button_ocultar.Location = new System.Drawing.Point(634, 413);
+            this.button_ocultar.Location = new System.Drawing.Point(726, 366);
             this.button_ocultar.Name = "button_ocultar";
             this.button_ocultar.Size = new System.Drawing.Size(130, 29);
             this.button_ocultar.TabIndex = 1;
@@ -58,9 +59,9 @@
             // 
             this.localImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.localImagem.ImageLocation = "";
-            this.localImagem.Location = new System.Drawing.Point(27, 34);
+            this.localImagem.Location = new System.Drawing.Point(0, -1);
             this.localImagem.Name = "localImagem";
-            this.localImagem.Size = new System.Drawing.Size(744, 316);
+            this.localImagem.Size = new System.Drawing.Size(907, 349);
             this.localImagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.localImagem.TabIndex = 2;
             this.localImagem.TabStop = false;
@@ -70,11 +71,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(906, 431);
+            this.ControlBox = false;
             this.Controls.Add(this.localImagem);
             this.Controls.Add(this.button_ocultar);
             this.Controls.Add(this.button_mostrarImagem);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "tela_imagem";
             this.Text = "Aqui está sua imagem";
             this.Load += new System.EventHandler(this.tela_imagem_Load);
