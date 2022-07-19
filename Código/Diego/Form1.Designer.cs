@@ -31,8 +31,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Baixar));
             this.button_baixar = new System.Windows.Forms.Button();
-            this.pesquisaImagem = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.PesquisaImagem = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button_baixar
@@ -50,19 +50,6 @@
             this.button_baixar.UseVisualStyleBackColor = false;
             this.button_baixar.Click += new System.EventHandler(this.button_baixar_Click);
             // 
-            // pesquisaImagem
-            // 
-            this.pesquisaImagem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pesquisaImagem.CausesValidation = false;
-            this.pesquisaImagem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pesquisaImagem.Location = new System.Drawing.Point(47, 263);
-            this.pesquisaImagem.Multiline = false;
-            this.pesquisaImagem.Name = "pesquisaImagem";
-            this.pesquisaImagem.Size = new System.Drawing.Size(686, 28);
-            this.pesquisaImagem.TabIndex = 12;
-            this.pesquisaImagem.Text = "";
-            this.pesquisaImagem.TextChanged += new System.EventHandler(this.pesquisaImagem_TextChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -75,6 +62,16 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "S.I 2020";
             // 
+            // PesquisaImagem
+            // 
+            this.PesquisaImagem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PesquisaImagem.Font = new System.Drawing.Font("Microsoft YaHei", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PesquisaImagem.Location = new System.Drawing.Point(45, 259);
+            this.PesquisaImagem.Name = "PesquisaImagem";
+            this.PesquisaImagem.Size = new System.Drawing.Size(684, 31);
+            this.PesquisaImagem.TabIndex = 14;
+            this.PesquisaImagem.TextChanged += new System.EventHandler(this.PesquisaImagem_TextChanged);
+            // 
             // Form_Baixar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -84,13 +81,14 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(906, 431);
+            this.Controls.Add(this.PesquisaImagem);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pesquisaImagem);
             this.Controls.Add(this.button_baixar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form_Baixar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baixar imagens";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ResumeLayout(false);
@@ -100,7 +98,7 @@
 
         #endregion
         private System.Windows.Forms.Button button_baixar;
-        private System.Windows.Forms.RichTextBox pesquisaImagem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox PesquisaImagem;
     }
 }

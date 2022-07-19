@@ -75,16 +75,15 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(906, 431);
-            this.ControlBox = false;
             this.Controls.Add(this.localImagem);
             this.Controls.Add(this.button_ocultar);
             this.Controls.Add(this.button_mostrarImagem);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "tela_imagem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aqui está sua imagem";
             this.Load += new System.EventHandler(this.tela_imagem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.localImagem)).EndInit();

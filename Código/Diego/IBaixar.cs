@@ -1,7 +1,9 @@
-﻿namespace AppDownload
+﻿using System.Threading.Tasks;
+
+namespace AppDownload
 {
     public interface IBaixar
     {
-        public string Baixar(string arquivo);
+        public Task<string> Baixar(string arquivo);
     }
 }
